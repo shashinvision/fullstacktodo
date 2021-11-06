@@ -26,8 +26,9 @@ Route::get('/task', function () {
 Route::get('/task/{id}', function ($id) {
     return TaskController::show($id);
 });
-Route::post('/task/{id}', function ($id) {
-    return TaskController::store($id);
+Route::post('/task', function (Request $request) {
+
+    return TaskController::store($request);
 });
 Route::put('/task/{id}', function (Request $request, $id) {
     return TaskController::update($request, $id);

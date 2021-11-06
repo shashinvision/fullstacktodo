@@ -20,7 +20,7 @@ class TaskController extends Controller
     }
     public static function store(Request $request)
     {
-        return Task::create($request);
+        return Task::create($request->all());
     }
 
     public static function update(Request $request, $id)

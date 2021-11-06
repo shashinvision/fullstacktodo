@@ -73,8 +73,8 @@ export default {
   },
   methods: {
     async taskList() {
-      const URL_FETCH_ALL = "http://localhost:8888/api/task";
-      await fetch(URL_FETCH_ALL, {
+      let url_fetch_all = "http://localhost:8888/api/task";
+      await fetch(url_fetch_all, {
         method: "GET",
       })
         .then((res) => {

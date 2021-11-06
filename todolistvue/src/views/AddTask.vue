@@ -3,6 +3,15 @@
     <form class="row g-3">
       <div class="col-md-12">
         <label for="validationDefault01" class="form-label">Title</label>
+        <div v-if="notification" class="alert alert-success" role="alert">
+          <i>Data Ingresada, los datos son los siguientes</i>
+          <code>
+            <pre>
+             {{ dataNotification }}
+
+            </pre>
+          </code>
+        </div>
         <input
           type="text"
           class="form-control"
@@ -39,11 +48,42 @@ export default {
         title: "",
         description: "",
       },
+      notification: false,
+      dataNotification: "",
     };
   },
   methods: {
-    dataSet() {
-      alert("En la funcion");
+    async dataSet() {
+      // esto es para evitar el error en this dentro del await que indica que es undefined
+      const self = this;
+
+      let url_fetch_all = "http://localhost:8888/api/task";
+
+      let dataForm = new FormData();
+      dataForm.append("title", this.dataTask.title);
+      dataForm.append("description", this.dataTask.description);
+
+      await fetch(url_fetch_all, {
+        method: "POST",
+        body: dataForm,
+      })
+        .then(function (response) {
+          // console.log("response =", response);
+          return response.json();
+        })
+        .then(function (data) {
+          console.log("datos", data);
+          self.notification = true;
+          self.dataNotification = data;
+          self.clear();
+        })
+        .catch(function (err) {
+          console.error(err);
+        });
+    },
+    clear() {
+      this.dataTask.title = "";
+      this.dataTask.description = "";
     },
   },
 };

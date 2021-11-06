@@ -2,6 +2,8 @@
   <div class="container w-50">
     <form class="row g-3">
       <div class="col-md-12">
+        <h2 v-if="typeForm != 'add'">ID: {{ dataDetail.id }}</h2>
+
         <label for="validationDefault01" class="form-label">Title</label>
 
         <div v-if="notification" class="alert alert-success" role="alert">
@@ -14,7 +16,6 @@
             </pre>
           </code>
         </div>
-        <h2 v-if="typeForm != 'add'">ID: {{ dataDetail.id }}</h2>
         <input
           type="text"
           class="form-control"

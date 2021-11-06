@@ -5,6 +5,7 @@
         <label for="validationDefault01" class="form-label">Title</label>
         <div v-if="notification" class="alert alert-success" role="alert">
           <i>Data Ingresada, los datos son los siguientes</i>
+          <p>Volviendo al home en 3 segundos</p>
           <code>
             <pre>
              {{ dataNotification }}
@@ -17,6 +18,7 @@
           class="form-control"
           id="validationDefault01"
           v-model="dataTask.title"
+          :readonly="typeForm != 'add'"
           required
         />
       </div>
@@ -27,6 +29,7 @@
           class="form-control"
           id="validationDefault02"
           v-model="dataTask.description"
+          :readonly="typeForm != 'add'"
           required
         />
       </div>
@@ -87,6 +90,8 @@ export default {
           self.notification = true;
           self.dataNotification = data;
           self.clear();
+
+          setTimeout(() => self.$router.push({ path: "/" }), 3000);
         })
         .catch(function (err) {
           console.error(err);

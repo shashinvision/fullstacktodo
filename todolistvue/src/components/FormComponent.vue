@@ -3,6 +3,7 @@
     <form class="row g-3">
       <div class="col-md-12">
         <label for="validationDefault01" class="form-label">Title</label>
+
         <div v-if="notification" class="alert alert-success" role="alert">
           <i>Data Ingresada, los datos son los siguientes</i>
           <p>Volviendo al home en 3 segundos</p>
@@ -13,12 +14,22 @@
             </pre>
           </code>
         </div>
+        <h2 v-if="typeForm != 'add'">ID: {{ dataDetail.id }}</h2>
         <input
           type="text"
           class="form-control"
           id="validationDefault01"
           v-model="dataTask.title"
-          :readonly="typeForm != 'add'"
+          v-if="typeForm == 'add'"
+          required
+        />
+        <input
+          type="text"
+          class="form-control"
+          id="validationDefault01"
+          v-model="dataDetail.title"
+          v-if="typeForm != 'add'"
+          readonly
           required
         />
       </div>
@@ -29,7 +40,16 @@
           class="form-control"
           id="validationDefault02"
           v-model="dataTask.description"
-          :readonly="typeForm != 'add'"
+          v-if="typeForm == 'add'"
+          required
+        />
+        <textarea
+          type="text"
+          class="form-control"
+          id="validationDefault02"
+          v-model="dataDetail.description"
+          v-if="typeForm != 'add'"
+          readonly
           required
         />
       </div>
@@ -64,6 +84,12 @@ export default {
     typeForm: {
       type: String,
       default: "",
+    },
+    dataDetail: {
+      type: Object,
+      default: () => {
+        return {};
+      },
     },
   },
   methods: {

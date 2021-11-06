@@ -29,13 +29,15 @@
               <td>{{ item.title }}</td>
               <td>{{ item.description }}</td>
               <td>
-                <b-iconstack font-scale="1">
-                  <b-icon
-                    stacked
-                    icon="box-arrow-up-right"
-                    variant="primary"
-                  ></b-icon>
-                </b-iconstack>
+                <router-link :to="{ name: 'Detail', params: { id: item.id } }">
+                  <b-iconstack font-scale="1">
+                    <b-icon
+                      stacked
+                      icon="box-arrow-up-right"
+                      variant="primary"
+                    ></b-icon>
+                  </b-iconstack>
+                </router-link>
               </td>
               <td>
                 <b-iconstack font-scale="1">

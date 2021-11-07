@@ -1,6 +1,6 @@
 <template>
   <div>
-    <FormComponent typeForm="taskDetail" :dataDetail="data" />
+    <FormComponent typeForm="detail" :dataDetail="data" />
   </div>
 </template>
 

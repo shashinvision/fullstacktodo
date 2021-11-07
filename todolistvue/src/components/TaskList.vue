@@ -40,9 +40,13 @@
                 </router-link>
               </td>
               <td>
-                <b-iconstack font-scale="1">
-                  <b-icon stacked icon="pen" variant="success"></b-icon>
-                </b-iconstack>
+                <router-link
+                  :to="{ name: 'EditTask', params: { id: item.id } }"
+                >
+                  <b-iconstack font-scale="1">
+                    <b-icon stacked icon="pen" variant="success"></b-icon>
+                  </b-iconstack>
+                </router-link>
               </td>
               <td>
                 <b-iconstack font-scale="1">

@@ -2,7 +2,7 @@
   <div class="container w-50">
     <form class="row g-3">
       <div class="col-md-12">
-        <h2 v-if="typeForm != 'add'">ID: {{ dataDetail.id }}</h2>
+        <h2 v-if="typeForm == 'detail'">ID: {{ dataDetail.id }}</h2>
 
         <label for="validationDefault01" class="form-label">Title</label>
 
@@ -21,7 +21,7 @@
           class="form-control"
           id="validationDefault01"
           v-model="dataTask.title"
-          v-if="typeForm == 'add'"
+          v-if="typeForm == 'add' || typeForm == 'edit'"
           required
         />
         <input
@@ -29,7 +29,7 @@
           class="form-control"
           id="validationDefault01"
           v-model="dataDetail.title"
-          v-if="typeForm != 'add'"
+          v-if="typeForm == 'detail'"
           readonly
           required
         />
@@ -41,7 +41,7 @@
           class="form-control"
           id="validationDefault02"
           v-model="dataTask.description"
-          v-if="typeForm == 'add'"
+          v-if="typeForm == 'add' || typeForm == 'edit'"
           required
         />
         <textarea
@@ -49,7 +49,7 @@
           class="form-control"
           id="validationDefault02"
           v-model="dataDetail.description"
-          v-if="typeForm != 'add'"
+          v-if="typeForm == 'detail'"
           readonly
           required
         />
@@ -57,7 +57,7 @@
       <div class="col-12">
         <button
           class="btn btn-primary"
-          v-if="typeForm == 'add'"
+          v-if="typeForm == 'add' || typeForm == 'edit'"
           type="submit"
           @click.prevent="dataSet"
         >

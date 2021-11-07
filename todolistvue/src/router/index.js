@@ -37,6 +37,12 @@ const routes = [
 
     component: () => import("../views/EditTask.vue"),
   },
+  {
+    path: "/delete/:id",
+    name: "DeleteTask",
+
+    component: () => import("../views/DeleteTask.vue"),
+  },
 ];
 
 const router = new VueRouter({

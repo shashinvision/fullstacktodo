@@ -2,13 +2,31 @@
   <div class="container w-50">
     <form class="row g-3">
       <div class="col-md-12">
-        <h2 v-if="typeForm == 'detail' || typeForm == 'edit'">
+        <h2
+          v-if="
+            typeForm == 'detail' || typeForm == 'edit' || typeForm == 'delete'
+          "
+        >
           ID: {{ dataDetail.id }}
         </h2>
 
-        <label for="validationDefault01" class="form-label">Title</label>
-
-        <div v-if="notification" class="alert alert-success" role="alert">
+        <label
+          for="validationDefault01"
+          class="form-label"
+          v-if="typeForm == 'detail' || typeForm == 'edit'"
+          >Title</label
+        >
+        <h2 v-if="typeForm == 'delete'">
+          ¡¡¡Esta apunto de eliminar una tarea!!!
+        </h2>
+        <div
+          v-if="
+            notification &&
+            (typeForm == 'add' || typeForm == 'detail' || typeForm == 'edit')
+          "
+          class="alert alert-success"
+          role="alert"
+        >
           <i>Data Ingresada, los datos son los siguientes</i>
           <p>Volviendo al home en 3 segundos</p>
           <code>
@@ -37,7 +55,12 @@
         />
       </div>
       <div class="col-md-12">
-        <label for="validationDefault02" class="form-label">Description</label>
+        <label
+          for="validationDefault02"
+          class="form-label"
+          v-if="typeForm == 'detail' || typeForm == 'edit'"
+          >Description</label
+        >
         <textarea
           type="text"
           class="form-control"
@@ -66,12 +89,20 @@
           Save task
         </button>
         <button
-          class="btn btn-primary"
+          class="btn btn-success"
           v-if="typeForm == 'edit'"
           type="submit"
           @click.prevent="dataEdit"
         >
           Edit Task
+        </button>
+        <button
+          class="btn btn-danger"
+          v-if="typeForm == 'delete'"
+          type="submit"
+          @click.prevent="dataDelete"
+        >
+          delete Task
         </button>
       </div>
     </form>
@@ -159,6 +190,37 @@ export default {
           self.clear();
 
           setTimeout(() => self.$router.push({ path: "/" }), 3000);
+        })
+        .catch(function (err) {
+          console.error(err);
+        });
+    },
+    async dataDelete() {
+      let url_fetch_all =
+        "http://localhost:8888/api/task/delete/" + this.dataDetail.id;
+
+      let dataForm = new FormData();
+      dataForm.append("title", this.dataTask.title);
+      dataForm.append("description", this.dataTask.description);
+
+      // esto es para evitar el error en this dentro del await que indica que es undefined
+      const self = this;
+
+      await fetch(url_fetch_all, {
+        method: "POST",
+        body: dataForm,
+      })
+        .then(function (response) {
+          // console.log("response =", response);
+          return response.json();
+        })
+        .then(function (data) {
+          console.log("datos", data);
+          self.notification = true;
+          self.dataNotification = data;
+          self.clear();
+
+          self.$router.push({ path: "/" });
         })
         .catch(function (err) {
           console.error(err);

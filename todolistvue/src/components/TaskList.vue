@@ -49,9 +49,13 @@
                 </router-link>
               </td>
               <td>
-                <b-iconstack font-scale="1">
-                  <b-icon stacked icon="trash" variant="danger"></b-icon>
-                </b-iconstack>
+                <router-link
+                  :to="{ name: 'DeleteTask', params: { id: item.id } }"
+                >
+                  <b-iconstack font-scale="1">
+                    <b-icon stacked icon="trash" variant="danger"></b-icon>
+                  </b-iconstack>
+                </router-link>
               </td>
             </tr>
           </tbody>

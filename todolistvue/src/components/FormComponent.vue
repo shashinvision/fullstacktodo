@@ -102,7 +102,7 @@
           type="submit"
           @click.prevent="dataDelete"
         >
-          delete Task
+          Delete Task
         </button>
       </div>
     </form>

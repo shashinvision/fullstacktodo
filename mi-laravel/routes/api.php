@@ -30,9 +30,9 @@ Route::post('/task', function (Request $request) {
 
     return TaskController::store($request);
 });
-Route::put('/task/{id}', function (Request $request, $id) {
+Route::post('/task/edit/{id}', function (Request $request, $id) {
     return TaskController::update($request, $id);
 });
-Route::delete('/task/{id}', function ($id) {
+Route::post('/task/delete/{id}', function ($id) {
     return TaskController::delete($id);
 });

@@ -36,7 +36,7 @@ artisan db:seed --class=TaskSeeders
 
 Para levantamiento de frontend
 
-debemos salir de nuestro contenedor docker workspace y npm luego vamos a la raíz del proyecto
+debemos salir de nuestro contenedor docker workspace, luego vamos a la raíz del proyecto
 
 exit
 

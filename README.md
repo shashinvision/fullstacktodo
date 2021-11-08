@@ -6,7 +6,7 @@ iNSTRUCCIONES
 
 Para Levantamiento de Docker y Laravel
 
-git clone https://gitlab.com/felipei.mancilla/backend_laravel.git
+git clone https:#gitlab.com/felipei.mancilla/backend_laravel.git
 
 cd backend_laravel
 
@@ -18,12 +18,13 @@ cp .env.example .env
 
 docker-compose up -d nginx mysql
 
-// Para confirmar los contenedores Docker y los puertos asignados
-// en este caso el puerto externo para mysql debe ser 3307 y para localhost de laravel el 8888
+# Para confirmar los contenedores Docker y los puertos asignados
+
+# en este caso el puerto externo para mysql debe ser 3307 y para localhost de laravel el 8888
 
 docker-compose ps
 
-// ir al contenedor workspace para la instalación del vendor en el backend, y ejecutar las migraciones y seeders
+# ir al contenedor workspace para la instalación del vendor en el backend, y ejecutar las migraciones y seeders
 
 docker-compose exec workspace bash
 
@@ -31,8 +32,9 @@ composer install
 artisan migrate
 artisan db:seed --class=TaskSeeders
 
-// Otro metodo para la integración de la BBDD es usar tu gestor de MYSQL favorito (DBeaver, MysqlWorkBench, etc) luego crear la Base de datos UTF-8 llamada prueba
-// luego de crear la BBDD tenemos importar el archivo .SQL en la carpeta docs/SQL.
+# Otro metodo para la integración de la BBDD es usar tu gestor de MYSQL favorito (DBeaver, MysqlWorkBench, etc) luego crear la Base de datos UTF-8 llamada prueba
+
+# luego de crear la BBDD tenemos importar el archivo .SQL en la carpeta docs/SQL.
 
 Para levantamiento de frontend
 
@@ -58,4 +60,4 @@ para el levantamiento del servicio ejecutar
 npm run serve
 
 nos indicará la dirección y puerto local y externo para su visualización.
-Ejemplo http://localhost:8081/
+Ejemplo http:#localhost:8081/

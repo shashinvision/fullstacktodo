@@ -11,9 +11,13 @@ git clone https://gitlab.com/felipei.mancilla/backend_laravel.git
 cd backend_laravel
 
 cd mi-laravel
+
 cp .env.example .env
+
 cd ..
+
 cd laradock
+
 cp .env.example .env
 
 docker-compose up -d nginx mysql
@@ -29,7 +33,9 @@ docker-compose ps
 docker-compose exec workspace bash
 
 composer install
+
 artisan migrate
+
 artisan db:seed --class=TaskSeeders
 
 # Otro metodo para la integración de la BBDD es usar tu gestor de MYSQL favorito (DBeaver, MysqlWorkBench, etc) luego crear la Base de datos UTF-8 llamada prueba

@@ -62,4 +62,4 @@ npm run serve
 
 # nos indicará la dirección y puerto local y externo para su visualización.
 
-# Ejemplo http:#localhost:8081/
+# Ejemplo http://localhost:8081/

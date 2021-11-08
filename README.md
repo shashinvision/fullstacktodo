@@ -1,10 +1,10 @@
 # backend_laravel
 
-Proyecto FULL stack Docker, Laravel y Vue
+# Proyecto FULL stack Docker, Laravel y Vue
 
-iNSTRUCCIONES
+# INSTRUCCIONES
 
-Para Levantamiento de Docker y Laravel
+# Para Levantamiento de Docker y Laravel
 
 git clone https:#gitlab.com/felipei.mancilla/backend_laravel.git
 
@@ -36,28 +36,30 @@ artisan db:seed --class=TaskSeeders
 
 # luego de crear la BBDD tenemos importar el archivo .SQL en la carpeta docs/SQL.
 
-Para levantamiento de frontend
+# Para levantamiento de frontend
 
-debemos salir de nuestro contenedor docker workspace, luego vamos a la raíz del proyecto
+# debemos salir de nuestro contenedor docker workspace, luego vamos a la raíz del proyecto
 
 exit
 
 cd ..
 
-comprobamos la ruta con
+# comprobamos la ruta con
 
 ls
 
 cd todolistvue
 
-en este punto debemos tener instalado node y npm en nuestro equipo local, ya que el frontend esta completamente separado del backend y su "dockerización", usaremos nuestro node local y ejecutamos
+# en este punto debemos tener instalado node y npm en nuestro equipo local, ya que el frontend esta completamente separado del backend y su "dockerización", usaremos nuestro node local y ejecutamos
 
-sudo npm install o puede ser npm install
-Esto es para crear la carpeta node_modules
+npm install
 
-para el levantamiento del servicio ejecutar
+# Esto es para crear la carpeta node_modules
+
+# Para el levantamiento del servicio ejecutar
 
 npm run serve
 
-nos indicará la dirección y puerto local y externo para su visualización.
-Ejemplo http:#localhost:8081/
+# nos indicará la dirección y puerto local y externo para su visualización.
+
+# Ejemplo http:#localhost:8081/

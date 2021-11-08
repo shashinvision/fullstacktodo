@@ -6,7 +6,7 @@
 
 # Para Levantamiento de Docker y Laravel
 
-git clone https:#gitlab.com/felipei.mancilla/backend_laravel.git
+git clone https://gitlab.com/felipei.mancilla/backend_laravel.git
 
 cd backend_laravel
 

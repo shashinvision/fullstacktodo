@@ -8,7 +8,7 @@ git clone https://gitlab.com/felipei.mancilla/backend_laravel.git
 cd backend_laravel
 
 
-cd cd mi-laravel
+cd mi-laravel
 cp .env.example .env
 cd ..
 cd laradock
@@ -31,10 +31,30 @@ artisan migrate
 artisan db:seed --class=TaskSeeders
 
 
-// Otro  metodo para la integración de la BBDD es usar tu gestor de MYSQL favorito (DBaver, MysqlWorkBench, etc) luego crear la Base de datos UTF-8 llamada prueba
+// Otro  metodo para la integración de la BBDD es usar tu gestor de MYSQL favorito (DBeaver, MysqlWorkBench, etc) luego crear la Base de datos UTF-8 llamada prueba
 // luego de crear la BBDD tenemos importar el archivo .SQL en la carpeta docs/SQL.
 
 
 Para levantamiento de frontend
 
+debemos salir de nuestro contenedor docker workspace ynpm  luego vamos a la raíz del proyecto
 
+exit 
+cd ..
+comprobamos la ruta con
+
+ls
+
+cd todolistvue
+
+en este punto debemos tener instalado node y npm en nuestro equipo local, ya que el frontend esta completamente separado del backend y su "dockerización", usaremos nuestro node local y ejecutamos
+
+sudo npm install o puede ser npm install
+Esto es para crear la carpeta node_modules
+
+para el levantamiento del servicio ejecutar 
+
+npm run serve
+
+nos indicará la dirección y puerto local y externo para su visualización.
+Ejemplo http://localhost:8081/

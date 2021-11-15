@@ -27,7 +27,7 @@ class TaskController extends Controller
     {
 
         $task = Task::findOrFail($id);
-        $task->update($request->all());
+        $task->update($request->input('title', 'description'));
         return $task;
     }
 

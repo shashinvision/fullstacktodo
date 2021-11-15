@@ -2,6 +2,8 @@
   <div class="container w-50">
     <form class="row g-3">
       <div class="col-md-12">
+        {{ access_token }}
+        {{ user_data }}
         <h2
           v-if="
             typeForm == 'detail' || typeForm == 'edit' || typeForm == 'delete'
@@ -137,7 +139,9 @@ export default {
     },
   },
   computed: {
-    ...mapState({ access_token: "access_token" }),
+    ...mapState({
+      access_token: "access_token",
+    }),
   },
   methods: {
     async dataSet() {
@@ -146,6 +150,7 @@ export default {
       let dataForm = new FormData();
       dataForm.append("title", this.dataTask.title);
       dataForm.append("description", this.dataTask.description);
+      dataForm.append("user_id", this.user_data.id);
 
       // let dataForm = {
       //   title: this.dataTask.title,
@@ -191,6 +196,7 @@ export default {
       let dataForm = {
         title: this.dataTask.title,
         description: this.dataTask.description,
+        user_id: this.user_data.id,
       };
 
       // esto es para evitar el error en this dentro del await que indica que es undefined

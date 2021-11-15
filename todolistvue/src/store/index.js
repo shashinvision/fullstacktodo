@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     API: {
       baseURL: "http://localhost:8888",
+      signin: "/api/auth/signup",
       login: "/api/auth/login",
       logout: "/api/auth/logout",
     },
@@ -41,10 +42,38 @@ export default new Vuex.Store({
       state.auth = false;
       state.username = null;
     },
+    signinMutation(state, payload) {
+      // console.log("respuesta signinMutation", payload);
+
+      state.message = payload.message;
+    },
   },
   actions: {
+    async signInAction({ commit, state }, dataSignIn) {
+      // console.log("signInAction", dataSignIn);
+
+      await fetch(state.API.baseURL + state.API.signin, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(dataSignIn), // body data type must match "Content-Type" header
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((payload) => {
+          // console.log("respuesta signInAction", payload);
+
+          commit("signinMutation", payload);
+        })
+        .catch(function (err) {
+          console.error("Error al intentar ingresar", err);
+        });
+    },
     async loginAction({ commit, state }, dataLogin) {
-      console.log("loginAction", dataLogin);
+      // console.log("loginAction", dataLogin);
 
       await fetch(state.API.baseURL + state.API.login, {
         method: "POST",

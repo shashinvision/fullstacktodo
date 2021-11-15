@@ -43,19 +43,46 @@ Route::group([
     });
 });
 
-Route::get('/task', function () {
-    return TaskController::index();
-});
-Route::get('/task/{id}', function ($id) {
-    return TaskController::show($id);
-});
-Route::post('/task', function (Request $request) {
 
-    return TaskController::store($request);
-});
-Route::post('/task/edit/{id}', function (Request $request, $id) {
-    return TaskController::update($request, $id);
-});
+// Problem Issues [Solved] Target class Controller does not exist
+
+// Route::get('/page', [PageController::class, 'index']);
+// // or
+// Route::get('/page', 'App\Http\Controllers\PageController@index');
+
+
+Route::get(
+    '/task',
+    [TaskController::class, 'index']
+);
+
+Route::get(
+    '/task/{id}',
+    [TaskController::class, 'show']
+);
+
+// Route::post('/task', function (Request $request) {
+
+//     return TaskController::store($request);
+// });
+
+Route::post(
+    '/task',
+    [TaskController::class, 'store']
+);
+
+
+
+// Route::post('/task/edit/{id}', function (Request $request, $id) {
+//     return TaskController::update($request, $id);
+// });
+Route::post(
+    '/task/edit/{id}',
+    [TaskController::class, 'update']
+);
+
+
+
 Route::post('/task/delete/{id}', function ($id) {
     return TaskController::delete($id);
 });

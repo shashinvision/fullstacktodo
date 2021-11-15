@@ -2,8 +2,6 @@
   <div class="container w-50">
     <form class="row g-3">
       <div class="col-md-12">
-        {{ access_token }}
-        {{ user_data }}
         <h2
           v-if="
             typeForm == 'detail' || typeForm == 'edit' || typeForm == 'delete'
@@ -11,7 +9,6 @@
         >
           ID: {{ dataDetail.id }}
         </h2>
-
         <label
           for="validationDefault01"
           class="form-label"
@@ -139,9 +136,7 @@ export default {
     },
   },
   computed: {
-    ...mapState({
-      access_token: "access_token",
-    }),
+    ...mapState(["user_data", "access_token"]),
   },
   methods: {
     async dataSet() {
@@ -221,7 +216,7 @@ export default {
           self.dataNotification = data;
           self.clear();
 
-          setTimeout(() => self.$router.push({ path: "/" }), 3000);
+          // setTimeout(() => self.$router.push({ path: "/" }), 3000);
         })
         .catch(function (err) {
           console.error(err);

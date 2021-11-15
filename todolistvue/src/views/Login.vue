@@ -17,7 +17,7 @@
             class="form-control"
             id="floatingInput"
             placeholder="name@example.com"
-            v-model="email"
+            v-model="dataLogin.email"
           />
           <label for="floatingInput">Email address</label>
         </div>
@@ -27,7 +27,7 @@
             class="form-control"
             id="floatingPassword"
             placeholder="Password"
-            v-model="password"
+            v-model="dataLogin.password"
           />
           <label for="floatingPassword">Password</label>
         </div>
@@ -37,7 +37,11 @@
             <input type="checkbox" value="remember-me" /> Remember me
           </label>
         </div> -->
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
+        <button
+          class="w-100 btn btn-lg btn-primary"
+          type="submit"
+          @click.prevent="onSubmit"
+        >
           Login
         </button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
@@ -47,13 +51,29 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      email: "felipei.mancilla@gmail.com",
-      password: "123",
-      remember_token: true,
+      dataLogin: {
+        email: "felipei.mancilla@gmail.com",
+        password: "123",
+        remember_token: true,
+      },
     };
+  },
+  methods: {
+    ...mapActions({
+      login: "loginAction",
+    }),
+    async onSubmit() {
+      try {
+        await this.login(this.dataLogin);
+        this.$router.push({ name: "Home" });
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 };
 </script>

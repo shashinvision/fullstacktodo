@@ -14,11 +14,7 @@
 <script>
 export default {
   data() {
-    return {
-      email: "felipei.mancilla@gmail.com",
-      password: "123",
-      remember_token: true,
-    };
+    return {};
   },
 };
 </script>

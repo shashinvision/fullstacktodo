@@ -9,7 +9,7 @@
         width="72"
         height="57"
       /> -->
-        <h1 class="h3 mb-3 fw-normal">Please SignUp</h1>
+        <h1 class="h3 mb-3 fw-normal">Please Sign in</h1>
 
         <div class="form-floating">
           <input
@@ -38,7 +38,7 @@
           </label>
         </div> -->
         <button class="w-100 btn btn-lg btn-primary" type="submit">
-          SignUp
+          Sign in
         </button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
       </form>
@@ -50,9 +50,8 @@
 export default {
   data() {
     return {
-      email: "felipei.mancilla@gmail.com",
-      password: "123",
-      remember_token: true,
+      email: "",
+      password: "",
     };
   },
 };

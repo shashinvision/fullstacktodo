@@ -44,7 +44,7 @@ export default new Vuex.Store({
   },
   actions: {
     async loginAction({ commit, state }, dataLogin) {
-      // console.log("loginAction", dataLogin);
+      console.log("loginAction", dataLogin);
 
       await fetch(state.API.baseURL + state.API.login, {
         method: "POST",

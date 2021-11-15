@@ -43,6 +43,24 @@ const routes = [
 
     component: () => import("../views/DeleteTask.vue"),
   },
+  {
+    path: "/login",
+    name: "Login",
+
+    component: () => import("../views/Login.vue"),
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+
+    component: () => import("../views/Logout.vue"),
+  },
+  {
+    path: "/signin",
+    name: "SignIn",
+
+    component: () => import("../views/SignIn.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -9,21 +9,21 @@ export default new Vuex.Store({
     auth: null,
   },
   mutations: {
-    doLogin(state, username) {
+    loginMutation(state, username) {
       state.auth = true;
       state.username = username;
     },
-    doLogout(state) {
+    logoutMutation(state) {
       state.auth = false;
       state.username = null;
     },
   },
   actions: {
-    doLogin({ commit }, username) {
-      commit("doLogin", username);
+    loginAction({ commit }, username) {
+      commit("loginMutation", username);
     },
-    doLogout({ commit }) {
-      commit("doLogout");
+    logoutAction({ commit }) {
+      commit("logoutMutation");
     },
   },
   modules: {},

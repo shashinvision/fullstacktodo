@@ -110,6 +110,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "AddTask",
   data() {
@@ -134,19 +136,32 @@ export default {
       },
     },
   },
+  computed: {
+    ...mapState({ access_token: "access_token" }),
+  },
   methods: {
     async dataSet() {
-      let url_fetch_all = "http://localhost:8888/api/task";
+      let url_fetch_all = "http://localhost:8888/api/auth/task";
 
-      let dataForm = new FormData();
-      dataForm.append("title", this.dataTask.title);
-      dataForm.append("description", this.dataTask.description);
+      // let dataForm = new FormData();
+      // dataForm.append("title", this.dataTask.title);
+      // dataForm.append("description", this.dataTask.description);
+
+      let dataForm = {
+        title: this.dataTask.title,
+        description: this.dataTask.description,
+      };
 
       // esto es para evitar el error en this dentro del await que indica que es undefined
       const self = this;
       await fetch(url_fetch_all, {
         method: "POST",
-        body: dataForm,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + self.access_token,
+          "X-Requested-With": "XMLHttpRequest",
+        },
+        body: JSON.stringify(dataForm),
       })
         .then(function (response) {
           // console.log("response =", response);
@@ -166,18 +181,28 @@ export default {
     },
     async dataEdit() {
       let url_fetch_all =
-        "http://localhost:8888/api/task/edit/" + this.dataDetail.id;
+        "http://localhost:8888/api/auth/task/edit/" + this.dataDetail.id;
 
-      let dataForm = new FormData();
-      dataForm.append("title", this.dataTask.title);
-      dataForm.append("description", this.dataTask.description);
+      // let dataForm = new FormData();
+      // dataForm.append("title", this.dataTask.title);
+      // dataForm.append("description", this.dataTask.description);
+
+      let dataForm = {
+        title: this.dataTask.title,
+        description: this.dataTask.description,
+      };
 
       // esto es para evitar el error en this dentro del await que indica que es undefined
       const self = this;
 
       await fetch(url_fetch_all, {
         method: "POST",
-        body: dataForm,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + self.access_token,
+          "X-Requested-With": "XMLHttpRequest",
+        },
+        body: JSON.stringify(dataForm),
       })
         .then(function (response) {
           // console.log("response =", response);
@@ -197,18 +222,28 @@ export default {
     },
     async dataDelete() {
       let url_fetch_all =
-        "http://localhost:8888/api/task/delete/" + this.dataDetail.id;
+        "http://localhost:8888/api/auth/task/delete/" + this.dataDetail.id;
 
-      let dataForm = new FormData();
-      dataForm.append("title", this.dataTask.title);
-      dataForm.append("description", this.dataTask.description);
+      // let dataForm = new FormData();
+      // dataForm.append("title", this.dataTask.title);
+      // dataForm.append("description", this.dataTask.description);
+
+      let dataForm = {
+        title: this.dataTask.title,
+        description: this.dataTask.description,
+      };
 
       // esto es para evitar el error en this dentro del await que indica que es undefined
       const self = this;
 
       await fetch(url_fetch_all, {
         method: "POST",
-        body: dataForm,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + self.access_token,
+          "X-Requested-With": "XMLHttpRequest",
+          body: JSON.stringify(dataForm),
+        },
       })
         .then(function (response) {
           // console.log("response =", response);

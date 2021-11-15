@@ -20,6 +20,29 @@ use App\Http\Controllers\TaskController;
 // });
 
 
+// Las 2 primeras rutas son públicas, y las 2 siguientes requieren de autenticación.
+Route::group([
+    'middleware' => 'api',
+    'namespace' => 'App\Http\Controllers',
+    'prefix' => 'auth'
+], function () {
+    Route::post(
+        'login',
+        'AuthController@login'
+    );
+    Route::post('signup', 'AuthController@signUp');
+
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function () {
+        Route::get('logout', 'AuthController@logout');
+        Route::get(
+            'user',
+            'AuthController@user'
+        );
+    });
+});
+
 Route::get('/task', function () {
     return TaskController::index();
 });

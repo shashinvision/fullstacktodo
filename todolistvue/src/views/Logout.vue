@@ -2,7 +2,11 @@
   <div class="text-center">
     <main class="form-signin">
       <form>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
+        <button
+          class="w-100 btn btn-lg btn-primary"
+          type="submit"
+          @click.prevent="onSubmit"
+        >
           Logout
         </button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
@@ -12,9 +16,19 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {};
+  },
+  methods: {
+    ...mapActions({
+      logout: "logoutAction",
+    }),
+    onSubmit() {
+      this.logout();
+      this.$router.push({ name: "Login" });
+    },
   },
 };
 </script>

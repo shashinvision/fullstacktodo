@@ -8,6 +8,7 @@ export default new Vuex.Store({
     API: {
       baseURL: "http://localhost:8888",
       login: "/api/auth/login",
+      logout: "/api/auth/logout",
     },
     access_token: null,
     expires_at: null,
@@ -19,7 +20,10 @@ export default new Vuex.Store({
   mutations: {
     loginMutation(state, dataLogin) {
       console.log("loginMutation", dataLogin);
-      if (dataLogin.message != undefined) {
+      if (
+        dataLogin.message != undefined ||
+        dataLogin.message == "Successfully logged out"
+      ) {
         state.auth = false;
         state.access_token = null;
         state.expires_at = null;
@@ -62,8 +66,26 @@ export default new Vuex.Store({
           console.error("Error al intentar ingresar", err);
         });
     },
-    logoutAction({ commit }) {
-      commit("logoutMutation");
+    async logoutAction({ commit, state }) {
+      await fetch(state.API.baseURL + state.API.logout, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + state.access_token,
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((payload) => {
+          console.log("Respuesta logout", payload);
+
+          commit("logoutMutation");
+        })
+        .catch(function (err) {
+          console.error("Error al intentar ingresar", err);
+        });
     },
   },
   modules: {},

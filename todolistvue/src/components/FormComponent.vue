@@ -143,25 +143,26 @@ export default {
     async dataSet() {
       let url_fetch_all = "http://localhost:8888/api/auth/task";
 
-      // let dataForm = new FormData();
-      // dataForm.append("title", this.dataTask.title);
-      // dataForm.append("description", this.dataTask.description);
+      let dataForm = new FormData();
+      dataForm.append("title", this.dataTask.title);
+      dataForm.append("description", this.dataTask.description);
 
-      let dataForm = {
-        title: this.dataTask.title,
-        description: this.dataTask.description,
-      };
+      // let dataForm = {
+      //   title: this.dataTask.title,
+      //   description: this.dataTask.description,
+      // };
 
       // esto es para evitar el error en this dentro del await que indica que es undefined
       const self = this;
       await fetch(url_fetch_all, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          // "Content-Type": "application/json",
           Authorization: "Bearer " + self.access_token,
           "X-Requested-With": "XMLHttpRequest",
         },
-        body: JSON.stringify(dataForm),
+        // body: JSON.stringify(dataForm),
+        body: dataForm,
       })
         .then(function (response) {
           // console.log("response =", response);

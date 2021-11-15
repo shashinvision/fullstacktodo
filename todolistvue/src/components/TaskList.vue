@@ -67,6 +67,7 @@
 
 <script>
 import { BRow, BCol, BButton } from "bootstrap-vue";
+import { mapState } from "vuex";
 
 export default {
   name: "TasksList",
@@ -81,17 +82,25 @@ export default {
       dataList: "",
     };
   },
+  computed: {
+    ...mapState({ access_token: "access_token" }),
+  },
   methods: {
     async taskList() {
-      let url_fetch_all = "http://localhost:8888/api/task";
+      let url_fetch_all = "http://localhost:8888/api/auth/task";
       await fetch(url_fetch_all, {
         method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.access_token,
+          "X-Requested-With": "XMLHttpRequest",
+        },
       })
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          // console.log("URL", data);
+          console.log("URL", data);
           this.dataList = data;
           // console.log("URL", this.dataList);
         })

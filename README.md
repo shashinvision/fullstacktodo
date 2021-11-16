@@ -6,7 +6,9 @@
 
 # Para Levantamiento de Docker y Laravel
 
-git clone https://gitlab.com/felipei.mancilla/backend_laravel.git
+```
+git clone https://github.com/shashinvision/fullstacktodo.git
+```
 
 # link vídeo descriptivo en youtube
 

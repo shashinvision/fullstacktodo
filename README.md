@@ -8,6 +8,12 @@
 
 git clone https://gitlab.com/felipei.mancilla/backend_laravel.git
 
+# link vídeo descriptivo en youtube
+
+```
+https://youtu.be/e-0x9xHEqvQ
+```
+
 cd backend_laravel
 
 cd mi-laravel

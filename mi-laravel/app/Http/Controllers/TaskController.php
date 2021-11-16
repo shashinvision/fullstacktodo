@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 
 use Illuminate\Http\Request;
+use DB;
+
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index($id = 2)
     {
-        return json_encode(Task::all());
+        // $task = Task::all();
+        $task = DB::table('tasks')
+            ->join('users', 'users.id', '=', 'tasks.user_id')
+            ->select('tasks.*', 'users.name')
+            ->where('users.id', $id)
+            ->get();
+        return json_encode($task);
     }
 
     public  function show($id)
@@ -27,7 +35,7 @@ class TaskController extends Controller
     {
 
         $task = Task::findOrFail($id);
-        $task->update($request->all('title', 'description'));
+        $task->update($request->all(['title', 'description']));
         return $task;
     }
 

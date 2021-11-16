@@ -41,7 +41,7 @@ Route::group([
             'AuthController@user'
         );
         Route::get(
-            '/task',
+            '/task/{id?}',
             'TaskController@index'
         );
         Route::get(

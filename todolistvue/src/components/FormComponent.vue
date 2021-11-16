@@ -174,7 +174,7 @@ export default {
           self.dataNotification = data;
           self.clear();
 
-          setTimeout(() => self.$router.push({ path: "/" }), 3000);
+          // setTimeout(() => self.$router.push({ path: "/" }), 3000);
         })
         .catch(function (err) {
           console.error(err);

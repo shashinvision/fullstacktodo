@@ -45,7 +45,7 @@ Route::group([
             'TaskController@index'
         );
         Route::get(
-            '/task/{id}',
+            '/task/detail/{id}',
             [TaskController::class, 'show']
         );
         Route::post(

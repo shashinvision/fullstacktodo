@@ -23,7 +23,7 @@ export default {
   methods: {
     async dataDetail() {
       let url_fetch_all =
-        "http://localhost:8888/api/auth/task/" + this.$route.params.id;
+        "http://localhost:8888/api/auth/task/detail/" + this.$route.params.id;
       await fetch(url_fetch_all, {
         method: "GET",
         headers: {
@@ -33,10 +33,11 @@ export default {
         },
       })
         .then((res) => {
+          // console.log("URL detail json", res);
           return res.json();
         })
         .then((data) => {
-          // console.log("URL", data);
+          console.log("URL detail", data);
           this.data = data;
           // console.log("URL", this.dataList);
         })

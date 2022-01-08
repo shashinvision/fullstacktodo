@@ -52,7 +52,7 @@ docker-compose up -d nginx mysql
 docker-compose ps
 ```
 
-# ir al contenedor workspace para la instalación del vendor en el backend, y ejecutar las migraciones y seeders
+# ir al contenedor workspace para la instalación del vendor en el backend, y ejecutar las migraciones y seeders, más el passport token con artisan passport:install
 
 ```
 docker-compose exec workspace bash
@@ -64,6 +64,10 @@ composer install
 
 ```
 artisan migrate
+```
+
+```
+php artisan passport:install
 ```
 
 # Otro metodo para la integración de la BBDD es usar tu gestor de MYSQL favorito (DBeaver, MysqlWorkBench, etc) luego crear la Base de datos UTF-8 llamada prueba

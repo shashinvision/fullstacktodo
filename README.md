@@ -17,10 +17,6 @@ https://youtu.be/e-0x9xHEqvQ
 ```
 
 ```
-cd backend_laravel
-```
-
-```
 cd mi-laravel
 ```
 
